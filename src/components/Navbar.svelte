@@ -21,7 +21,7 @@ import { onMount } from 'svelte';
 <div class="navbar">
    <a class:active="{active == 'home'}" on:click={()=>{change('home')}} id="home" href="/">Home</a>
    <a class:active="{active == 'about'}"  on:click={()=>{change('about')}} id="about" href="/about">About</a>
-   <a href="https://github.com"><ion-icon name="logo-github"></ion-icon></a>
+   <a href="https://github.com/alombi/ios-settings-urls-website"><ion-icon name="logo-github"></ion-icon></a>
 </div>
 
 <style>
