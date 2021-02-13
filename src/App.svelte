@@ -2,7 +2,8 @@
 	import Modal from './components/Modal.svelte';
 	import MainList from './components/MainList.svelte';
 	import Navbar from './components/Navbar.svelte';
-	import {Route} from 'tinro'; 
+	import { Route, router } from 'tinro'; 
+	router.mode.memory();
 </script>
 
 <main>
