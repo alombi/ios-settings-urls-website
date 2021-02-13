@@ -17,10 +17,18 @@
 			keys.push(response[i].split(':')[0].replace('- ', ''));
 			keys = keys
 			sessionStorage.setItem('keys', JSON.stringify(keys));
-			var value = response[i].split(':')[1] + ':' + response[i].split(':')[2];
-			value = value.replaceAll('\`', '')
-			values.push(value);
-			values = values
+			if(response[i].split(':')[2].indexOf('or') != -1){
+				var value = response[i].split(':')[1] + ':' + response[i].split(':')[2];
+				value = value.split(' or ',)[0];
+				value = value.replaceAll('\`', '')
+				values.push(value);
+				values = values
+			}else{
+				var value = response[i].split(':')[1] + ':' + response[i].split(':')[2];
+				value = value.replaceAll('\`', '')
+				values.push(value);
+				values = values
+			}
 		}
 		let done = true;
 		return done
@@ -44,14 +52,18 @@
 		params = '';
 		search();
 	}
-
+	function key(e){
+		if(e.keyCode == 13){
+			search()
+		}
+	}
 onMount(()=>{
 	promise = reset()
 })
 </script>
 
 <div>
-	<a id="search" on:click={search}><ion-icon name="search"></ion-icon></a><input placeholder="Search" type="text" bind:value={params}><a id="x"><ion-icon on:click={clear} name="close-outline"></ion-icon></a>
+	<a id="search" on:click={search}><ion-icon name="search"></ion-icon></a><input on:keypress={key} placeholder="Search" type="text" bind:value={params}><a id="x"><ion-icon on:click={clear} name="close-outline"></ion-icon></a>
 	<br><br>
 	<hr>
 	<br>

@@ -3,9 +3,11 @@
 	import MainList from './components/MainList.svelte';
 	import Navbar from './components/Navbar.svelte';
 	import { Route, router } from 'tinro'; 
+	import Notifications from 'svelte-notifications';
 	router.mode.memory();
 </script>
 
+<Notifications>
 <main>
 	<Route path="/">
 		<div id="page">
@@ -25,6 +27,7 @@
 		</div>
 	</Route>
 </main>
+</Notifications>
 
 <style>
 	main {
